@@ -11,3 +11,4 @@ playwright-report/
 wp-config.php
 **/uploads/
 .taste-skill/
+/demo/.local-export/

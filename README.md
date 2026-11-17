@@ -2,13 +2,19 @@
 
 Tema de blocos para criar sites WordPress com código ou com ajuda de IA. Você define a estrutura e os estilos no repositório. Textos, imagens, menus e publicações continuam editáveis no Gutenberg.
 
-- [Experimentar a base no navegador](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FIvensArj%2Fwp-code-starter%2Fdemo%2Fplayground-base.zip)
-- [Experimentar o portfólio com Galeria](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FIvensArj%2Fwp-code-starter%2Fdemo%2Fplayground-portfolio.zip)
-- [Baixar o tema e o plugin opcional](https://github.com/IvensArj/wp-code-starter/releases/latest)
+## Comece pelo Local WP
 
-Os exemplos usam o Estúdio Linha de Cedro, um estúdio fictício de arquitetura.
+1. [Baixe o ZIP pronto para importar](https://github.com/IvensArj/wp-code-starter/releases/latest/download/wp-code-starter-local.zip).
+2. Abra o [Local WP](https://localwp.com/) e arraste o ZIP para a janela do aplicativo. Você também pode escolher **Import site** no menu.
+3. Dê um nome ao site e conclua a importação. Use PHP 8.3 ou superior no ambiente do site.
+4. Clique em **Open site** para ver o resultado. Para editar, ative **One-click admin**, selecione **admin** e clique em **WP Admin**.
 
-## Comece pelo repositório
+O ZIP já traz o tema ativo, as páginas Início, Sobre e Blog, as imagens e uma Galeria com dois projetos fictícios do Estúdio Linha de Cedro. Abra **Páginas → Início → Editar** para começar pelo Gutenberg. Para personalizar pelo código, abra a pasta do site pelo Local e procure o tema em `app/public/wp-content/themes/wp-code-starter`.
+
+Se quiser conhecer o editor antes de importar, abra a [demo do site](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FIvensArj%2Fwp-code-starter%2Fdemo%2Fplayground-base.zip) ou a [demo da Galeria](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FIvensArj%2Fwp-code-starter%2Fdemo%2Fplayground-portfolio.zip) no navegador.
+
+
+## Desenvolva pelo repositório
 
 1. No GitHub, clique em **Use this template → Create a new repository** e clone o repositório criado.
 2. Instale Node.js 24.18 e npm 11.16 ou superiores e inicie o Docker com Compose v2.
@@ -24,9 +30,9 @@ Abra [o site local](http://localhost:8888) ou [o painel](http://localhost:8888/w
 
 `npm run demo:portfolio` ativa o plugin opcional e acrescenta a Galeria e os projetos fictícios. Os comandos de demo reconhecem registros já carregados, preservam edições nesses registros e sinalizam colisões de slugs com conteúdo seu. Use `npm run stop` para parar o ambiente.
 
-### Instale no Local ou em outro WordPress
+### Instale em um WordPress que já existe
 
-Em WordPress 7.1 ou superior com PHP 8.3 ou superior, use **Aparência → Temas → Adicionar → Enviar tema** e selecione `wp-code-starter.zip`. Ative o tema e monte as páginas a partir dos padrões no Gutenberg. Se quiser uma página inicial estática, selecione-a em **Configurações → Leitura**. O padrão **Lista de artigos** pode ser inserido numa página comum, mantendo a introdução editável.
+Baixe o tema e o plugin na [página de downloads](https://github.com/IvensArj/wp-code-starter/releases/latest). Em WordPress 7.1 ou superior com PHP 8.3 ou superior, use **Aparência → Temas → Adicionar → Enviar tema** e selecione `wp-code-starter.zip`. Ative o tema e monte as páginas a partir dos padrões no Gutenberg. Se quiser uma página inicial estática, selecione-a em **Configurações → Leitura**. O padrão **Lista de artigos** pode ser inserido numa página comum, mantendo a introdução editável.
 
 Para testar Projetos, envie `wpcs-projects.zip` em **Plugins → Adicionar plugin → Enviar plugin**, ative-o, cadastre projetos com áreas e insira o padrão **Galeria de projetos** numa página. Use links permanentes com nomes de publicação para obter URLs como `/projetos/casa-do-patio/`.
 

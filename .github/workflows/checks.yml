@@ -39,6 +39,25 @@ jobs:
           npm run demo:portfolio
           npm run demo:portfolio
           WPCS_TEST_PORTFOLIO=1 npm test
+      - name: Export the site for Local WP
+        run: |
+          npm exec -- wp-env run cli wp eval '$user = get_user_by("login", "admin"); wp_set_password(wp_generate_password(64), $user->ID); WP_Session_Tokens::get_instance($user->ID)->destroy_all();'
+          npm exec -- wp-env run cli sh -ec '
+            revisions=$(wp post list --post_type=revision --post_status=inherit --format=ids)
+            if [ -n "$revisions" ]; then wp post delete $revisions --force; fi
+            wp transient delete --all
+            mkdir -p wp-content/wpcs-demo/.local-export
+            cp -R wp-content/uploads wp-content/wpcs-demo/.local-export/uploads
+            wp db export wp-content/wpcs-demo/.local-export/database.sql --add-drop-table
+          '
+          node tools/package-local.mjs
+      - name: Save the Local WP package
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-wp
+          path: dist/wp-code-starter-local.zip
+          if-no-files-found: error
+
       - name: Print failed browser assertions
         if: failure()
         run: |

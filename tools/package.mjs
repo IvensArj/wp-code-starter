@@ -1,4 +1,4 @@
-import { mkdir, readFile } from 'node:fs/promises';
+import { mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import AdmZip from 'adm-zip';
 
@@ -17,7 +17,10 @@ function packageWordPress(directory, slug) {
 const theme = packageWordPress('themes/wp-code-starter', 'wp-code-starter');
 const plugin = packageWordPress('plugins/wpcs-projects', 'wpcs-projects');
 const fixtures = new AdmZip();
-fixtures.addLocalFolder('demo', 'demo');
+fixtures.addLocalFolder('demo/content', 'demo/content');
+fixtures.addLocalFolder('demo/media', 'demo/media');
+fixtures.addLocalFile('demo/seed.php', 'demo');
+fixtures.addLocalFile('demo/CREDITOS.md', 'demo');
 
 for (const mode of ['base', 'portfolio']) {
   const zip = new AdmZip();
