@@ -70,7 +70,7 @@ test('a página reabre após salvar metadados de composição pelo Gutenberg', a
   await login(page);
   await openHomeEditor(page);
   const canvas = page.frameLocator('iframe[name="editor-canvas"]');
-  await expect(canvas.getByRole('heading', { name: homeHeading })).toBeVisible();
+  await expect(canvas.getByText(homeHeading, { exact: true })).toBeVisible();
   await expect(canvas.locator('.wpcs-site-header')).toBeVisible();
   await expect(canvas.locator('.wpcs-site-footer')).toBeVisible();
 

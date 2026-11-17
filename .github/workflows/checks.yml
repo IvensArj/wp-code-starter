@@ -39,3 +39,9 @@ jobs:
           npm run demo:portfolio
           npm run demo:portfolio
           WPCS_TEST_PORTFOLIO=1 npm test
+      - name: Print failed browser assertions
+        if: failure()
+        run: |
+          if [ -d test-results ]; then
+            find test-results -name error-context.md -exec cat {} \;
+          fi
