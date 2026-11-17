@@ -6,7 +6,7 @@ Tema de blocos para criar sites WordPress com código ou com ajuda de IA. Você 
 
 1. [Baixe o ZIP pronto para importar](https://github.com/IvensArj/wp-code-starter/releases/latest/download/wp-code-starter-local.zip).
 2. Abra o [Local WP](https://localwp.com/) e arraste o ZIP para a janela do aplicativo. Você também pode escolher **Import site** no menu.
-3. Dê um nome ao site e conclua a importação. Use PHP 8.3 ou superior no ambiente do site.
+3. Dê um nome ao site, mantenha **Preferred** se o ambiente usar PHP 8.2 ou superior e clique em **Import site**.
 4. Clique em **Open site** para ver o resultado. Para editar, ative **One-click admin**, selecione **admin** e clique em **WP Admin**.
 
 O ZIP já traz o tema ativo, as páginas Início, Sobre e Blog, as imagens e uma Galeria com dois projetos fictícios do Estúdio Linha de Cedro. Abra **Páginas → Início → Editar** para começar pelo Gutenberg. Para personalizar pelo código, abra a pasta do site pelo Local e procure o tema em `app/public/wp-content/themes/wp-code-starter`.
@@ -26,13 +26,13 @@ npm run start
 npm run demo
 ```
 
-Abra [o site local](http://localhost:8888) ou [o painel](http://localhost:8888/wp-admin/). O `wp-env` cria a conta local `admin` com senha `password`. Use essa conta apenas no ambiente local. O WordPress do ambiente de referência é 7.1.4 com PHP 8.3.
+Abra [o site local](http://localhost:8888) ou [o painel](http://localhost:8888/wp-admin/). O `wp-env` cria a conta local `admin` com senha `password`. Use essa conta apenas no ambiente local. O WordPress do ambiente de referência é 7.1.4 com PHP 8.2.
 
 `npm run demo:portfolio` ativa o plugin opcional e acrescenta a Galeria e os projetos fictícios. Os comandos de demo reconhecem registros já carregados, preservam edições nesses registros e sinalizam colisões de slugs com conteúdo seu. Use `npm run stop` para parar o ambiente.
 
 ### Instale em um WordPress que já existe
 
-Baixe o tema e o plugin na [página de downloads](https://github.com/IvensArj/wp-code-starter/releases/latest). Em WordPress 7.1 ou superior com PHP 8.3 ou superior, use **Aparência → Temas → Adicionar → Enviar tema** e selecione `wp-code-starter.zip`. Ative o tema e monte as páginas a partir dos padrões no Gutenberg. Se quiser uma página inicial estática, selecione-a em **Configurações → Leitura**. O padrão **Lista de artigos** pode ser inserido numa página comum, mantendo a introdução editável.
+Baixe o tema e o plugin na [página de downloads](https://github.com/IvensArj/wp-code-starter/releases/latest). Em WordPress 7.1 ou superior com PHP 8.2 ou superior, use **Aparência → Temas → Adicionar → Enviar tema** e selecione `wp-code-starter.zip`. Ative o tema e monte as páginas a partir dos padrões no Gutenberg. Se quiser uma página inicial estática, selecione-a em **Configurações → Leitura**. O padrão **Lista de artigos** pode ser inserido numa página comum, mantendo a introdução editável.
 
 Para testar Projetos, envie `wpcs-projects.zip` em **Plugins → Adicionar plugin → Enviar plugin**, ative-o, cadastre projetos com áreas e insira o padrão **Galeria de projetos** numa página. Use links permanentes com nomes de publicação para obter URLs como `/projetos/casa-do-patio/`.
 

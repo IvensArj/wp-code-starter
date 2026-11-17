@@ -2,9 +2,9 @@
 /**
  * Plugin Name: WP Code Starter · Projetos
  * Description: Exemplo de cadastro de projetos com áreas e galeria filtrável.
- * Version: 1.0.0
+ * Version: 1.1.1
  * Requires at least: 7.1
- * Requires PHP: 8.3
+ * Requires PHP: 8.2
  * License: GPL-2.0-or-later
  * Text Domain: wpcs-projects
  */
