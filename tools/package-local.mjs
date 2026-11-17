@@ -13,6 +13,8 @@ zip.addLocalFile(database);
 zip.addLocalFolder(uploads, 'wp-content/uploads');
 zip.addLocalFolder('themes/wp-code-starter', 'wp-content/themes/wp-code-starter');
 zip.addLocalFile('LICENSE', 'wp-content/themes/wp-code-starter');
+zip.addLocalFile('AGENTS.md', 'wp-content/themes/wp-code-starter');
+zip.addLocalFolder('.agents/skills', 'wp-content/themes/wp-code-starter/.agents/skills');
 zip.addLocalFolder('plugins/wpcs-projects', 'wp-content/plugins/wpcs-projects');
 zip.addLocalFile('LICENSE', 'wp-content/plugins/wpcs-projects');
 

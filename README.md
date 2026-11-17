@@ -14,6 +14,19 @@ O ZIP já traz o tema ativo, as páginas Início, Sobre e Blog, as imagens e uma
 Se quiser conhecer o editor antes de importar, abra a [demo do site](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FIvensArj%2Fwp-code-starter%2Fdemo%2Fplayground-base.zip) ou a [demo da Galeria](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FIvensArj%2Fwp-code-starter%2Fdemo%2Fplayground-portfolio.zip) no navegador.
 
 
+## Trabalhe com IA
+
+As skills do projeto ficam em [.agents/skills](.agents/skills), com um [AGENTS.md](AGENTS.md) que indica quando usar cada uma.
+
+- **`wpcs-design`** para criar ou redesenhar páginas e padrões.
+- **`wpcs-revisao-visual`** para corrigir aparência genérica, excesso de elementos decorativos e problemas de leitura ou navegação.
+- **`wpcs-codigo`** para resolver uma tarefa com contexto focado e preservar a edição no Gutenberg.
+
+Se você importou o ZIP no Local WP, abra `app/public/wp-content/themes/wp-code-starter` como pasta de trabalho da IA. O pacote já coloca o `AGENTS.md` e as três skills ali. Em um agente que trabalha por instrução direta, peça que ele leia somente a skill relevante. Por exemplo:
+
+> Use a skill wpcs-design para criar um padrão de Serviços com os tokens do tema. Mantenha textos e botões editáveis e confira no celular.
+
+
 ## Desenvolva pelo repositório
 
 1. No GitHub, clique em **Use this template → Create a new repository** e clone o repositório criado.
