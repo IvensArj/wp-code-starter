@@ -128,12 +128,13 @@ function wpcs_demo_add_portfolio( int $courtyard ): int {
 	return wpcs_demo_post( 'galeria', 'Galeria', 'page', wpcs_demo_markup( 'gallery' ) . "\n" . $pattern['content'] );
 }
 
-$wpcs_courtyard = wpcs_demo_image( 'casa-do-patio', 'Casa do Pátio', 'Casa térrea em madeira de cedro cercada por um jardim em declive' );
-$wpcs_about = wpcs_demo_post( 'sobre', 'Sobre', 'page', wpcs_demo_markup( 'about' ) );
 $wpcs_posts = WP_Block_Patterns_Registry::get_instance()->get_registered( 'wp-code-starter/posts' );
 if ( empty( $wpcs_posts['content'] ) ) {
 	throw new RuntimeException( 'Ative primeiro o tema WP Code Starter.' );
 }
+
+$wpcs_courtyard = wpcs_demo_image( 'casa-do-patio', 'Casa do Pátio', 'Casa térrea em madeira de cedro cercada por um jardim em declive' );
+$wpcs_about = wpcs_demo_post( 'sobre', 'Sobre', 'page', wpcs_demo_markup( 'about' ) );
 
 $wpcs_blog = wpcs_demo_post( 'blog', 'Blog', 'page', wpcs_demo_markup( 'blog' ) . "\n" . $wpcs_posts['content'] );
 $wpcs_home = wpcs_demo_post( 'inicio', 'Início', 'page', wpcs_demo_markup( 'home', array(
