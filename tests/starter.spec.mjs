@@ -74,32 +74,31 @@ test('a página reabre após salvar metadados de composição pelo Gutenberg', a
   await expect(canvas.locator('.wpcs-site-header')).toBeVisible();
   await expect(canvas.locator('.wpcs-site-footer')).toBeVisible();
 
-  const original = await page.evaluate(() => {
-    const editor = wp.data.select('core/block-editor');
-    const blocks = editor.getBlocks();
+  const hero = canvas.locator('.wpcs-hero[data-block]').first();
+  const blocks = [hero, hero.locator('[data-type="core/paragraph"]').first(), hero.locator('[data-type="core/image"]').first()];
+  const getIds = () => Promise.all(blocks.map((block) => block.getAttribute('data-block')));
+  const original = await page.evaluate((ids) => {
+    const blocks = wp.blocks.parse(wp.data.select('core/editor').getEditedPostContent());
     const flatten = (items) => items.flatMap((block) => [block, ...flatten(block.innerBlocks)]);
-    const all = flatten(blocks);
-    const hero = all.find((block) => (block.attributes.className || '').split(' ').includes('wpcs-hero'));
-    const paragraph = flatten(hero.innerBlocks).find((block) => block.name === 'core/paragraph');
-    const image = flatten(hero.innerBlocks).find((block) => block.name === 'core/image');
+    const store = wp.data.select('core/block-editor');
     return {
-      invalid: all.filter((block) => block.isValid === false).map((block) => block.name),
-      values: [hero, paragraph, image].map((block) => block.attributes.metadata.wpcsVisual),
+      invalid: flatten(blocks).filter((block) => block.isValid === false).map((block) => block.name),
+      values: ids.map((id) => store.getBlockAttributes(id).metadata.wpcsVisual),
     };
-  });
+  }, await getIds());
   expect(original.invalid).toEqual([]);
 
-  const setVisuals = (values) => page.evaluate(async (next) => {
-    const store = wp.data.select('core/block-editor');
-    const flatten = (items) => items.flatMap((block) => [block, ...flatten(block.innerBlocks)]);
-    const hero = flatten(store.getBlocks()).find((block) => (block.attributes.className || '').split(' ').includes('wpcs-hero'));
-    const inner = flatten(hero.innerBlocks);
-    const affected = [hero, inner.find((block) => block.name === 'core/paragraph'), inner.find((block) => block.name === 'core/image')];
-    affected.forEach((block, index) => wp.data.dispatch('core/block-editor').updateBlockAttributes(block.clientId, {
-      metadata: { ...block.attributes.metadata, wpcsVisual: next[index] },
-    }));
-    await wp.data.dispatch('core/editor').savePost();
-  }, values);
+  async function setVisuals(values) {
+    const ids = await getIds();
+    await page.evaluate(async ({ ids, values }) => {
+      const store = wp.data.select('core/block-editor');
+      const { updateBlockAttributes } = wp.data.dispatch('core/block-editor');
+      ids.forEach((id, index) => updateBlockAttributes(id, {
+        metadata: { ...store.getBlockAttributes(id).metadata, wpcsVisual: values[index] },
+      }));
+      await wp.data.dispatch('core/editor').savePost();
+    }, { ids, values });
+  }
 
   const updated = [
     { ...original.values[0], first: 60, gap: 29 },

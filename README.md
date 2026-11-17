@@ -58,7 +58,7 @@ Com IA, experimente este pedido no seu clone:
 
 ## Teste e publique seu site
 
-- Execute `npx playwright install chromium` uma vez e `npm test` com o ambiente local e o conteúdo de exemplo prontos. Use uma instância de desenvolvimento dedicada para os testes de edição.
+- Execute `npx playwright install chromium` uma vez e `npm test` com o ambiente local e o conteúdo de exemplo prontos. Use uma instância de desenvolvimento dedicada para os testes de edição. Para incluir a Galeria, carregue o exemplo de portfólio e defina a variável de ambiente WPCS_TEST_PORTFOLIO=1.
 - Rode `npm run package` para gerar em `dist/` os ZIPs do tema, do plugin e das demos do Playground.
 - Instale as versões do tema e do plugin na hospedagem. Para publicar páginas, menus, mídias e ajustes que você já fez no painel, migre o banco e a biblioteca pelo fluxo da hospedagem. Valide URLs, formulários que você tiver adicionado e o conteúdo publicado após a migração.
 

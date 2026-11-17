@@ -143,9 +143,9 @@
     if (!defaults[post.type]) return null;
 
     const template = post.template && post.template !== 'default' ? post.template : defaults[post.type];
-    const target = encodeURIComponent(settings.theme + '//' + template);
-    const part = (slug) => '/wp_template_part/' + encodeURIComponent(settings.theme + '//' + slug);
-    const link = (label, path) => h('p', { key: path }, h('a', { href: editorLink(path) }, label));
+    const target = (settings.theme + '//' + template);
+    const part = (slug) => '/wp_template_part/' + (settings.theme + '//' + slug);
+    const link = (label, path) => h('p', { key: path }, h('a', { href: editorLink(path), target: '_blank', rel: 'noopener' }, label));
 
     return h(wp.editor.PluginDocumentSettingPanel, { name: 'edit-guide', title: __('Onde editar', domain) },
       h('p', null, __('Use a visualização em lista para selecionar blocos. Os estilos e a composição ficam na barra lateral do bloco.', domain)),

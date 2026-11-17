@@ -45,11 +45,12 @@
 }
 
 .wpcs-hero {
-  min-height: min(650px, 74svh);
+  min-height: min(690px, 76svh);
 }
 
 .wpcs-hero h1 {
   letter-spacing: -0.055em;
+  overflow-wrap: anywhere;
   text-wrap: balance;
 }
 
@@ -65,7 +66,8 @@
   display: block;
 }
 
-.wpcs-callout {
+.wp-site-blocks .wpcs-callout,
+.editor-styles-wrapper .wpcs-callout {
   padding: var(--wp--preset--spacing--40);
 }
 
