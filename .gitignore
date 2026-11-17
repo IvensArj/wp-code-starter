@@ -1,0 +1,13 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.wp-env.override.json
+.env
+.env.*
+*.sql
+*.sql.gz
+*.log
+wp-config.php
+**/uploads/
+.taste-skill/

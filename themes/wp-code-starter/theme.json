@@ -1,0 +1,70 @@
+{
+  "$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": { "contentSize": "720px", "wideSize": "1152px" },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        { "slug": "paper", "name": "Papel", "color": "#f7f5ed" },
+        { "slug": "ink", "name": "Carvão", "color": "#202620" },
+        { "slug": "forest", "name": "Floresta", "color": "#284b3a" },
+        { "slug": "linen", "name": "Linho", "color": "#e8e7d9" },
+        { "slug": "line", "name": "Linha", "color": "#c4c8b8" }
+      ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "fluid": true,
+      "fontFamilies": [
+        { "slug": "body", "name": "Sem serifa", "fontFamily": "system-ui, sans-serif" },
+        { "slug": "display", "name": "Serifa", "fontFamily": "Georgia, serif" }
+      ],
+      "fontSizes": [
+        { "slug": "small", "name": "Pequeno", "size": "0.9rem" },
+        { "slug": "body", "name": "Texto", "size": "1.0625rem" },
+        { "slug": "large", "name": "Grande", "size": "1.4rem" },
+        { "slug": "section", "name": "Seção", "size": "2.9rem", "fluid": { "min": "2rem", "max": "2.9rem" } },
+        { "slug": "display", "name": "Abertura", "size": "5rem", "fluid": { "min": "2.7rem", "max": "5rem" } }
+      ]
+    },
+    "spacing": {
+      "units": ["px", "rem", "%", "vw"],
+      "spacingSizes": [
+        { "slug": "20", "name": "Curto", "size": "0.75rem" },
+        { "slug": "30", "name": "Médio", "size": "1.5rem" },
+        { "slug": "40", "name": "Amplo", "size": "2.75rem" },
+        { "slug": "50", "name": "Seção", "size": "clamp(3rem, 7vw, 6rem)" }
+      ]
+    }
+  },
+  "styles": {
+    "color": { "background": "var:preset|color|paper", "text": "var:preset|color|ink" },
+    "spacing": {
+      "blockGap": "var:preset|spacing|30",
+      "padding": { "left": "clamp(1rem, 4vw, 3rem)", "right": "clamp(1rem, 4vw, 3rem)" }
+    },
+    "typography": { "fontFamily": "var:preset|font-family|body", "fontSize": "var:preset|font-size|body", "lineHeight": "1.65" },
+    "elements": {
+      "heading": { "typography": { "fontFamily": "var:preset|font-family|display", "fontWeight": "400", "lineHeight": "1.09" } },
+      "h1": { "typography": { "fontSize": "var:preset|font-size|display" } },
+      "h2": { "typography": { "fontSize": "var:preset|font-size|section" } },
+      "link": { "color": { "text": "var:preset|color|forest" } },
+      "button": {
+        "color": { "background": "var:preset|color|forest", "text": "var:preset|color|paper" },
+        "border": { "radius": "0" },
+        "spacing": { "padding": { "top": "0.75rem", "bottom": "0.75rem", "left": "1.2rem", "right": "1.2rem" } }
+      }
+    }
+  },
+  "templateParts": [
+    { "area": "header", "name": "header", "title": "Cabeçalho" },
+    { "area": "footer", "name": "footer", "title": "Rodapé" }
+  ],
+  "customTemplates": [
+    { "name": "landing", "title": "Página com abertura própria", "postTypes": ["page"] }
+  ]
+}

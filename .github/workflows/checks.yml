@@ -1,0 +1,41 @@
+name: WordPress checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  wordpress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.18.0
+          cache: npm
+      - name: Install dependencies
+        run: |
+          npm install --global npm@11.16.0
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Check PHP and package
+        run: |
+          find themes plugins demo -name '*.php' -print0 | xargs -0 -n1 php -l
+          npm run package
+      - name: Check the theme on its own
+        run: |
+          npm run start
+          npm run demo
+          npm run demo
+          npm test
+      - name: Check the optional portfolio
+        run: |
+          npm run demo:portfolio
+          npm run demo:portfolio
+          WPCS_TEST_PORTFOLIO=1 npm test

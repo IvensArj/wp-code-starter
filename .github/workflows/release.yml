@@ -1,0 +1,57 @@
+name: Publish packages and demos
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml
+
+  publish:
+    if: github.repository == 'IvensArj/wp-code-starter'
+    needs: checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24.18.0
+          cache: npm
+      - run: |
+          npm install --global npm@11.16.0
+          npm ci
+          npm run package
+      - name: Publish the installation ZIPs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          if ! gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --verify-tag --generate-notes
+          fi
+          gh release upload "$RELEASE_TAG" dist/*.zip --clobber
+      - name: Publish the Playground bundles
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          demos="$RUNNER_TEMP/demo-publish"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git ls-remote --exit-code --heads origin demo > /dev/null; then
+            git fetch origin demo
+            git worktree add -b demo "$demos" FETCH_HEAD
+          else
+            git worktree add --orphan -b demo "$demos"
+          fi
+          cp dist/playground-*.zip "$demos/"
+          git -C "$demos" add playground-*.zip
+          if ! git -C "$demos" diff --cached --quiet; then
+            git -C "$demos" commit -m "Playground bundles for $RELEASE_TAG"
+            git -C "$demos" push origin demo
+          fi

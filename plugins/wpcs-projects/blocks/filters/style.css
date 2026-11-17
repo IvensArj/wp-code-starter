@@ -1,0 +1,22 @@
+.wp-block-wpcs-area-filters ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.wp-block-wpcs-area-filters a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid currentColor;
+  text-decoration: none;
+}
+
+.wp-block-wpcs-area-filters a:is(:hover, [aria-current]) {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

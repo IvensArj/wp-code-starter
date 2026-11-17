@@ -1,0 +1,23 @@
+{
+  "name": "wp-code-starter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.18.0",
+    "npm": ">=11.16.0"
+  },
+  "scripts": {
+    "start": "wp-env start",
+    "stop": "wp-env stop",
+    "demo": "wp-env run cli wp eval-file wp-content/wpcs-demo/seed.php base",
+    "demo:portfolio": "wp-env run cli wp eval-file wp-content/wpcs-demo/seed.php portfolio",
+    "package": "node tools/package.mjs",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@wordpress/env": "12.1.0",
+    "adm-zip": "0.6.1"
+  }
+}
