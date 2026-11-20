@@ -7,7 +7,17 @@ Tema de blocos para criar sites WordPress com código ou com ajuda de IA. Você 
 1. [Baixe o ZIP pronto para importar](https://github.com/IvensArj/wp-code-starter/releases/latest/download/wp-code-starter-local.zip).
 2. Abra o [Local WP](https://localwp.com/) e arraste o ZIP para a janela do aplicativo. Você também pode escolher **Import site** no menu.
 3. Dê um nome ao site, mantenha **Preferred** se o ambiente usar PHP 8.2 ou superior e clique em **Import site**.
-4. Clique em **Open site** para ver o resultado. Para editar, ative **One-click admin**, selecione **admin** e clique em **WP Admin**.
+4. Clique em **WP Admin** e entre com usuário **admin** e senha **password**. Você também pode ativar **One-click admin** e selecionar **admin**.
+
+A partir da versão 1.2.1, o ZIP usa **admin / password** para desenvolvimento local. Troque a senha antes de publicar o site em uma hospedagem.
+
+Se você já importou um ZIP anterior e a senha falhar, selecione o site no Local, abra **Site shell** e execute:
+
+```sh
+wp user update admin --user_pass=password
+```
+
+Depois abra **WP Admin** e entre com **admin / password**.
 
 O ZIP já traz o tema ativo, as páginas Início, Sobre e Blog, as imagens e uma Galeria com dois projetos fictícios do Estúdio Linha de Cedro. Abra **Páginas → Início → Editar** para começar pelo Gutenberg. Para personalizar pelo código, abra a pasta do site pelo Local e procure o tema em `app/public/wp-content/themes/wp-code-starter`.
 

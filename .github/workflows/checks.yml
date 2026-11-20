@@ -41,7 +41,7 @@ jobs:
           WPCS_TEST_PORTFOLIO=1 npm test
       - name: Export the site for Local WP
         run: |
-          npm exec -- wp-env run cli wp eval '$user = get_user_by("login", "admin"); wp_set_password(wp_generate_password(64), $user->ID); WP_Session_Tokens::get_instance($user->ID)->destroy_all();'
+          npm exec -- wp-env run cli wp eval '$user = get_user_by("login", "admin"); wp_set_password("password", $user->ID); WP_Session_Tokens::get_instance($user->ID)->destroy_all(); if (!wp_check_password("password", get_userdata($user->ID)->user_pass, $user->ID)) { throw new RuntimeException("Local demo password verification failed"); }'
           npm exec -- wp-env run cli sh -ec '
             revisions=$(wp post list --post_type=revision --post_status=inherit --format=ids)
             if [ -n "$revisions" ]; then wp post delete $revisions --force; fi
