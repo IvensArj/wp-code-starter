@@ -37,6 +37,16 @@ Se você importou o ZIP no Local WP, abra `app/public/wp-content/themes/wp-code-
 > Use a skill wpcs-design para criar um padrão de Serviços com os tokens do tema. Mantenha textos e botões editáveis e confira no celular.
 
 
+### Criar um site por referência com IA
+
+Você pode fornecer imagens de referência, links e uma descrição do site. O `AGENTS.md` exige que o agente mantenha a arquitetura de blocos e ofereça controles de edição para o conteúdo de cada seção. Componentes próprios precisam de interface no Gutenberg.
+
+Um pedido de exemplo:
+
+> Leia o AGENTS.md e use wpcs-design. Crie meu site seguindo esta referência. Monte cada seção com conteúdo editável no Gutenberg e crie controles para os componentes personalizados necessários. Aplique o conteúdo nas páginas do meu WordPress local. Teste alterar, salvar e reabrir as seções e me indique onde editar cada uma.
+
+As instruções orientam o agente. A confirmação de editabilidade vem do teste no WordPress. Peça que ele informe os testes realizados e qualquer limitação pendente. Mudanças de estrutura no código precisam ser aplicadas às páginas existentes quando seus blocos já estiverem salvos no banco.
+
 ## Desenvolva pelo repositório
 
 1. No GitHub, clique em **Use this template → Create a new repository** e clone o repositório criado.

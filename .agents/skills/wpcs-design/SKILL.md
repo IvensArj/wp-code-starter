@@ -1,12 +1,13 @@
 ---
 name: wpcs-design
-description: Desenha ou redesenha páginas, seções e padrões do WP Code Starter usando Gutenberg e os tokens do tema.
+description: Cria ou redesenha sites por referência visual ou descrição mantendo conteúdo e componentes editáveis no Gutenberg do WP Code Starter.
 ---
 
-## Design no Gutenberg
+## Transformar a referência em blocos
 
-- Identifique o público, a informação principal e a ação de cada página. Use conteúdo representativo e imagens que ajudem a entender o serviço, lugar ou produto.
-- Leia o template, os padrões mais próximos e o `theme.json`. Decida uma hierarquia de texto, espaçamento e alinhamento antes de compor novas seções.
-- Monte conteúdo editável com blocos nativos. Use padrões para composições reutilizáveis, partes de template para regiões compartilhadas e `theme.json` para decisões globais.
-- Reserve CSS para comportamentos que o editor não oferece. Confira a mesma página no site e no canvas do Gutenberg, no desktop e no celular.
-- Para um ajuste pontual, preserve a linguagem visual estabelecida e mexa na seção solicitada.
+- Identifique público, páginas, conteúdo e ações. Para uma referência, decomponha a composição em regiões globais, seções de página e componentes repetidos. Associe cada conteúdo ao lugar onde a pessoa poderá editá-lo.
+- Leia o contrato de editabilidade em `AGENTS.md`, o template próximo e `theme.json`. Defina tipografia, escala, cores e alinhamentos a partir do pedido. A demonstração de arquitetura fornece exemplos substituíveis para o novo site.
+- Use blocos nativos para conteúdo, padrões para seções reutilizáveis e partes de template para cabeçalho e rodapé. Escolha entre o modelo com título da página e o modelo com abertura própria para produzir um único H1.
+- Use as opções de layout e Estilos do núcleo e os controles existentes antes de ampliar o editor. Quando o componente pedido exigir implementação própria, forneça interface de edição e prévia correspondente junto do componente.
+- Aplique a composição na página real e confira a edição do conteúdo e das opções expostas. Verifique o site e o canvas em desktop e celular. Registre onde cada seção é editada e os resultados de salvar e reabrir.
+- Para ajuste pontual, preserve a linguagem visual e os dados existentes. Confira personalizações de templates e estilos salvas no banco quando o arquivo alterado não aparecer no site.
